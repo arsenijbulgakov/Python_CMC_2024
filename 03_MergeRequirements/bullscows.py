@@ -1,21 +1,24 @@
 import argparse
+import cowsay
 import random
 import urllib.request
 from typing import List
 
 
 def ask(prompt: str, valid: List[str] = None) -> str:
-    print(prompt)
+    cow = random.choice(cowsay.list_cows())
+    print(cowsay.cowsay(message=prompt, cow=cow))
     while True:
         guess = input()
         if valid is None or guess in valid:
             return guess
         else:
-            print("Вы ввели недопустимое слово, попробуйте еще раз")
+            print(cowsay.cowsay(message="Вы ввели недопустимое слово, попробуйте еще раз", cow=cow))
 
 
 def inform(format_string: str, bulls: int, cows: int) -> None:
-    print(format_string.format(bulls, cows))
+    cow = random.choice(cowsay.list_cows())
+    print(cowsay.cowsay(message=format_string.format(bulls, cows), cow=cow))
 
 
 def bullscows(guess: str, secret: str) -> (int, int):
@@ -58,7 +61,6 @@ def get_words_from_file(filename: str) -> List[str]:
     with open(filename, "r") as f:
         words = list(map(lambda x: x[:-1], f.readlines()))
     return words
-
 
 
 def main():
