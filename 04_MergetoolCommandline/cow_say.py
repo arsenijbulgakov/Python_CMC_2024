@@ -8,7 +8,7 @@ COW_TONGUES = ["U ", " U", "UU"]
 
 
 class CowSay(cmd.Cmd):
-    """It's cowsay shell!"""
+    intro = "It's cowsay shell!"
     prompt = "cowsay$ "
 
     def _parse_args(self, args):
